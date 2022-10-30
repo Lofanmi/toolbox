@@ -1,0 +1,731 @@
+object FormMain: TFormMain
+  Left = -1483
+  Height = 617
+  Top = 166
+  Width = 702
+  Caption = '扬扬工具箱'
+  ClientHeight = 617
+  ClientWidth = 702
+  OnCreate = FormCreate
+  LCLVersion = '2.2.5.0'
+  object StatusBarName: TStatusBar
+    Left = 0
+    Height = 18
+    Top = 599
+    Width = 702
+    Panels = <    
+      item
+        Alignment = taRightJustify
+        Text = '广东广州 22-26度 多云转晴'
+        Width = 200
+      end    
+      item
+        Text = ' '
+        Width = 0
+      end    
+      item
+        Alignment = taRightJustify
+        Text = '  10月29日 周六 00:00:00 '
+        Width = 200
+      end>
+    SimplePanel = False
+  end
+  object PageControlMain: TPageControl
+    Left = 0
+    Height = 595
+    Top = 0
+    Width = 702
+    ActivePage = TabStringHelpers
+    Align = alClient
+    BorderSpacing.Bottom = 4
+    TabIndex = 0
+    TabOrder = 1
+    TabPosition = tpBottom
+    object TabStringHelpers: TTabSheet
+      Caption = '字符串助手'
+      ClientHeight = 565
+      ClientWidth = 696
+      object PageControlStringHelpers: TPageControl
+        Left = 0
+        Height = 565
+        Top = 0
+        Width = 696
+        ActivePage = TabCoder
+        Align = alClient
+        TabIndex = 1
+        TabOrder = 0
+        object TabHash: TTabSheet
+          Caption = '哈希函数'
+          ClientHeight = 535
+          ClientWidth = 690
+          object PanelHashInput: TPanel
+            Left = 0
+            Height = 96
+            Top = 0
+            Width = 690
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 96
+            ClientWidth = 690
+            TabOrder = 0
+            object MemoHashInput: TMemo
+              Left = 37
+              Height = 86
+              Top = 5
+              Width = 648
+              Align = alClient
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              OnChange = MemoHashInputChange
+              TabOrder = 0
+            end
+            object LabelHashInput: TLabel
+              Left = 5
+              Height = 86
+              Top = 5
+              Width = 27
+              Align = alLeft
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              Caption = '输入'
+              ParentColor = False
+            end
+          end
+          object PanelHashOutput: TPanel
+            Left = 0
+            Height = 439
+            Top = 96
+            Width = 690
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 439
+            ClientWidth = 690
+            TabOrder = 1
+            object LabelHashOutput: TLabel
+              Left = 5
+              Height = 426
+              Top = 8
+              Width = 27
+              Align = alLeft
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 8
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              Caption = '输出'
+              ParentColor = False
+            end
+            object PanelHash: TPanel
+              Left = 37
+              Height = 439
+              Top = 0
+              Width = 653
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 439
+              ClientWidth = 653
+              TabOrder = 0
+              object PanelHashOutputSHA512: TPanel
+                Left = 0
+                Height = 32
+                Top = 128
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 0
+                object EditHashOutputSHA512: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelSHA512: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelSHA512: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 55
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'SHA512: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputSHA256: TPanel
+                Left = 0
+                Height = 32
+                Top = 96
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 1
+                object EditHashOutputSHA256: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelSHA256: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelSHA256: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 58
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'SHA256: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputSHA1: TPanel
+                Left = 0
+                Height = 32
+                Top = 64
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 2
+                object EditHashOutputSHA1: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelSHA1: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelSHA1: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 39
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'SHA1: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputCRC32: TPanel
+                Left = 0
+                Height = 32
+                Top = 32
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 3
+                object EditHashOutputCRC32: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelCRC32: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelCRC32: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 50
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'CRC32: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputMD5: TPanel
+                Left = 0
+                Height = 32
+                Top = 0
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 4
+                object EditHashOutputMD5: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelMD5: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelMD5: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 36
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'MD5: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputFNV32: TPanel
+                Left = 0
+                Height = 32
+                Top = 160
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 5
+                object EditHashOutputFNV32: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelFNV32: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelFNV32: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 49
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'FNV32: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputFNV64: TPanel
+                Left = 0
+                Height = 32
+                Top = 192
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 6
+                object EditHashOutputFNV64: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelFNV64: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelFNV64: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 49
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'FNV64: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOutputFNV128: TPanel
+                Left = 0
+                Height = 32
+                Top = 224
+                Width = 653
+                Align = alTop
+                BevelOuter = bvNone
+                ClientHeight = 32
+                ClientWidth = 653
+                TabOrder = 7
+                object EditHashOutputFNV128: TEdit
+                  Left = 65
+                  Height = 22
+                  Top = 5
+                  Width = 583
+                  Align = alClient
+                  BorderSpacing.Left = 5
+                  BorderSpacing.Top = 5
+                  BorderSpacing.Right = 5
+                  BorderSpacing.Bottom = 5
+                  TabOrder = 1
+                end
+                object PanelHashLabelFNV128: TPanel
+                  Left = 0
+                  Height = 32
+                  Top = 0
+                  Width = 60
+                  Align = alLeft
+                  BevelOuter = bvNone
+                  ClientHeight = 32
+                  ClientWidth = 60
+                  TabOrder = 0
+                  object LabelFNV128: TLabel
+                    Left = 5
+                    Height = 19
+                    Top = 8
+                    Width = 55
+                    Align = alLeft
+                    BorderSpacing.Left = 5
+                    BorderSpacing.Top = 8
+                    BorderSpacing.Right = 5
+                    BorderSpacing.Bottom = 5
+                    Caption = 'FNV128: '
+                    ParentColor = False
+                  end
+                end
+              end
+              object PanelHashOptions: TPanel
+                Left = 0
+                Height = 34
+                Top = 405
+                Width = 653
+                Align = alBottom
+                BevelOuter = bvNone
+                ClientHeight = 34
+                ClientWidth = 653
+                TabOrder = 8
+                object CheckBoxHashLowerUpperCase: TCheckBox
+                  Left = 0
+                  Height = 18
+                  Top = 8
+                  Width = 76
+                  Caption = '大写字母'
+                  OnChange = CheckBoxHashLowerUpperCaseChange
+                  TabOrder = 0
+                end
+              end
+            end
+          end
+        end
+        object TabCoder: TTabSheet
+          Caption = '编码/解码'
+          ClientHeight = 535
+          ClientWidth = 690
+          object PanelCoderInput: TPanel
+            Left = 0
+            Height = 96
+            Top = 0
+            Width = 690
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 96
+            ClientWidth = 690
+            TabOrder = 0
+            object MemoCoderInput: TMemo
+              Left = 37
+              Height = 86
+              Top = 5
+              Width = 648
+              Align = alClient
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              OnChange = MemoHashInputChange
+              TabOrder = 0
+            end
+            object LabelCoderInput: TLabel
+              Left = 5
+              Height = 86
+              Top = 5
+              Width = 27
+              Align = alLeft
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              Caption = '输入'
+              ParentColor = False
+            end
+          end
+          object PanelCoderButtonGroup: TPanel
+            Left = 0
+            Height = 71
+            Top = 464
+            Width = 690
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 71
+            ClientWidth = 690
+            TabOrder = 1
+            object ButtonBase64Encode: TButton
+              Left = 37
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'Base64编码'
+              OnClick = ButtonBase64EncodeClick
+              TabOrder = 0
+            end
+            object ButtonBase64Decode: TButton
+              Left = 37
+              Height = 25
+              Top = 36
+              Width = 120
+              Caption = 'Base64解码'
+              OnClick = ButtonBase64DecodeClick
+              TabOrder = 1
+            end
+            object ButtonBase64EncodeURL: TButton
+              Left = 169
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'Base64URL编码'
+              OnClick = ButtonBase64EncodeURLClick
+              TabOrder = 2
+            end
+            object ButtonBase64DecodeURL: TButton
+              Left = 169
+              Height = 25
+              Top = 36
+              Width = 120
+              Caption = 'Base64URL解码'
+              OnClick = ButtonBase64DecodeURLClick
+              TabOrder = 3
+            end
+            object ButtonURLEncode: TButton
+              Left = 301
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'URLEncode'
+              OnClick = ButtonURLEncodeClick
+              TabOrder = 4
+            end
+            object ButtonURLDecode: TButton
+              Left = 301
+              Height = 25
+              Top = 36
+              Width = 120
+              Caption = 'URLDecode'
+              OnClick = ButtonURLDecodeClick
+              TabOrder = 5
+            end
+            object ButtonUnicodeEncode: TButton
+              Left = 433
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'Unicode转义'
+              OnClick = ButtonUnicodeEncodeClick
+              TabOrder = 6
+            end
+            object ButtonUnicodeDecode: TButton
+              Left = 433
+              Height = 25
+              Top = 36
+              Width = 120
+              Caption = 'Unicode反转义'
+              OnClick = ButtonUnicodeDecodeClick
+              TabOrder = 7
+            end
+            object ButtonHTMLEncode: TButton
+              Left = 565
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'HTML转义'
+              OnClick = ButtonHTMLEncodeClick
+              TabOrder = 8
+            end
+            object ButtonHTMLDecode: TButton
+              Left = 565
+              Height = 25
+              Top = 36
+              Width = 120
+              Caption = 'HTML反转义'
+              OnClick = ButtonHTMLDecodeClick
+              TabOrder = 9
+            end
+          end
+          object PanelCoderOutput: TPanel
+            Left = 0
+            Height = 368
+            Top = 96
+            Width = 690
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 368
+            ClientWidth = 690
+            TabOrder = 2
+            object MemoCoderOutput: TMemo
+              Left = 37
+              Height = 358
+              Top = 5
+              Width = 648
+              Align = alClient
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              OnChange = MemoHashInputChange
+              TabOrder = 0
+            end
+            object LabelCoderOutput: TLabel
+              Left = 5
+              Height = 358
+              Top = 5
+              Width = 27
+              Align = alLeft
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              Caption = '输出'
+              ParentColor = False
+            end
+          end
+        end
+        object TabJSON: TTabSheet
+          Caption = 'JSON格式化'
+        end
+        object TabBaseConv: TTabSheet
+          Caption = '进制转换'
+        end
+      end
+    end
+    object TabTimeHelpers: TTabSheet
+      Caption = '时间助手'
+    end
+    object TabShortcuts: TTabSheet
+      Caption = '快速启动'
+    end
+    object TabSpider: TTabSheet
+      Caption = '爬虫程序'
+    end
+    object TabBatches: TTabSheet
+      Caption = '批处理'
+    end
+  end
+end
