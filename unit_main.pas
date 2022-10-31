@@ -13,16 +13,19 @@ type
   { TFormMain }
 
   TFormMain = class(TForm)
+    ButtonJSONFormat: TButton;
     ButtonHTMLDecode: TButton;
     ButtonHTMLEncode: TButton;
+    ButtonJSONCompact: TButton;
     ButtonURLDecode: TButton;
     ButtonBase64Encode: TButton;
     ButtonBase64Decode: TButton;
-    ButtonBase64EncodeURL: TButton;
-    ButtonBase64DecodeURL: TButton;
+    ButtonURLBase64Encode: TButton;
+    ButtonURLBase64Decode: TButton;
     ButtonUnicodeDecode: TButton;
     ButtonURLEncode: TButton;
     ButtonUnicodeEncode: TButton;
+    ButtonJSONClear: TButton;
     CheckBoxHashLowerUpperCase: TCheckBox;
     EditHashOutputFNV64: TEdit;
     EditHashOutputFNV128: TEdit;
@@ -32,7 +35,9 @@ type
     EditHashOutputCRC32: TEdit;
     EditHashOutputMD5: TEdit;
     EditHashOutputFNV32: TEdit;
+    LabelJSONText: TLabel;
     LabelCoderOutput: TLabel;
+    LabelJSONView: TLabel;
     LabelFNV64: TLabel;
     LabelFNV128: TLabel;
     LabelHashInput: TLabel;
@@ -44,13 +49,17 @@ type
     LabelCRC32: TLabel;
     LabelMD5: TLabel;
     LabelFNV32: TLabel;
+    MemoJSONText: TMemo;
     MemoCoderOutput: TMemo;
     MemoHashInput: TMemo;
     MemoCoderInput: TMemo;
     PageControlStringHelpers: TPageControl;
     PageControlMain: TPageControl;
+    PanelCoderButtonGroup1: TPanel;
     PanelCoderInput: TPanel;
+    PanelJSONText: TPanel;
     PanelCoderOutput: TPanel;
+    PanelCoderOutput1: TPanel;
     PanelHashOptions: TPanel;
     PanelHashLabelFNV64: TPanel;
     PanelHashLabelFNV128: TPanel;
@@ -82,10 +91,14 @@ type
     TabShortcuts: TTabSheet;
     TabSpider: TTabSheet;
     TabBatches: TTabSheet;
+    TreeViewJSONView: TTreeView;
     procedure ButtonBase64DecodeClick(Sender: TObject);
-    procedure ButtonBase64DecodeURLClick(Sender: TObject);
+    procedure ButtonJSONClearClick(Sender: TObject);
+    procedure ButtonJSONCompactClick(Sender: TObject);
+    procedure ButtonJSONFormatClick(Sender: TObject);
+    procedure ButtonURLBase64DecodeClick(Sender: TObject);
     procedure ButtonBase64EncodeClick(Sender: TObject);
-    procedure ButtonBase64EncodeURLClick(Sender: TObject);
+    procedure ButtonURLBase64EncodeClick(Sender: TObject);
     procedure ButtonHTMLDecodeClick(Sender: TObject);
     procedure ButtonHTMLEncodeClick(Sender: TObject);
     procedure ButtonUnicodeDecodeClick(Sender: TObject);
@@ -95,6 +108,8 @@ type
     procedure CheckBoxHashLowerUpperCaseChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MemoHashInputChange(Sender: TObject);
+    procedure MemoJSONTextChange(Sender: TObject);
+    procedure PanelCoderInputClick(Sender: TObject);
   private
 
   public
@@ -115,6 +130,11 @@ begin
 
 end;
 
+procedure TFormMain.MemoJSONTextChange(Sender: TObject);
+begin
+
+end;
+
 procedure TFormMain.CheckBoxHashLowerUpperCaseChange(Sender: TObject);
 begin
 
@@ -130,7 +150,7 @@ begin
 
 end;
 
-procedure TFormMain.ButtonBase64EncodeURLClick(Sender: TObject);
+procedure TFormMain.ButtonURLBase64EncodeClick(Sender: TObject);
 begin
 
 end;
@@ -170,7 +190,22 @@ begin
 
 end;
 
-procedure TFormMain.ButtonBase64DecodeURLClick(Sender: TObject);
+procedure TFormMain.ButtonJSONClearClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFormMain.ButtonJSONFormatClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFormMain.ButtonJSONCompactClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFormMain.ButtonURLBase64DecodeClick(Sender: TObject);
 begin
 
 end;

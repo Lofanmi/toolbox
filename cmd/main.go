@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Lofanmi/toolbox/internal/gotil"
 	_ "github.com/ying32/govcl/pkgs/macapp"
 	_ "github.com/ying32/govcl/pkgs/winappres"
 
@@ -9,6 +10,9 @@ import (
 )
 
 func main() {
+	if err := gotil.InitIPData("/Users/lht/code/github/Lofanmi/toolbox/qqwry.dat"); err != nil {
+		panic(err)
+	}
 	vcl.Application.SetScaled(true)
 	vcl.Application.SetTitle("扬扬工具箱")
 	vcl.Application.Initialize()

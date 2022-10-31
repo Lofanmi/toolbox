@@ -16,16 +16,20 @@ object FormMain: TFormMain
     Panels = <    
       item
         Alignment = taRightJustify
-        Text = '广东广州 22-26度 多云转晴'
-        Width = 200
+        Width = 150
       end    
       item
+        Alignment = taRightJustify
+        Text = '广东广州 22-26度 多云转晴'
+        Width = 320
+      end    
+      item
+        Alignment = taRightJustify
         Text = ' '
         Width = 0
       end    
       item
         Alignment = taRightJustify
-        Text = '  10月29日 周六 00:00:00 '
         Width = 200
       end>
     SimplePanel = False
@@ -50,9 +54,9 @@ object FormMain: TFormMain
         Height = 565
         Top = 0
         Width = 696
-        ActivePage = TabCoder
+        ActivePage = TabJSON
         Align = alClient
-        TabIndex = 1
+        TabIndex = 2
         TabOrder = 0
         object TabHash: TTabSheet
           Caption = '哈希函数'
@@ -79,6 +83,7 @@ object FormMain: TFormMain
               BorderSpacing.Right = 5
               BorderSpacing.Bottom = 5
               OnChange = MemoHashInputChange
+              ScrollBars = ssAutoVertical
               TabOrder = 0
             end
             object LabelHashInput: TLabel
@@ -533,17 +538,18 @@ object FormMain: TFormMain
           ClientWidth = 690
           object PanelCoderInput: TPanel
             Left = 0
-            Height = 96
+            Height = 200
             Top = 0
             Width = 690
             Align = alTop
             BevelOuter = bvNone
-            ClientHeight = 96
+            ClientHeight = 200
             ClientWidth = 690
             TabOrder = 0
+            OnClick = PanelCoderInputClick
             object MemoCoderInput: TMemo
               Left = 37
-              Height = 86
+              Height = 190
               Top = 5
               Width = 648
               Align = alClient
@@ -551,12 +557,12 @@ object FormMain: TFormMain
               BorderSpacing.Top = 5
               BorderSpacing.Right = 5
               BorderSpacing.Bottom = 5
-              OnChange = MemoHashInputChange
+              ScrollBars = ssAutoVertical
               TabOrder = 0
             end
             object LabelCoderInput: TLabel
               Left = 5
-              Height = 86
+              Height = 190
               Top = 5
               Width = 27
               Align = alLeft
@@ -596,22 +602,22 @@ object FormMain: TFormMain
               OnClick = ButtonBase64DecodeClick
               TabOrder = 1
             end
-            object ButtonBase64EncodeURL: TButton
+            object ButtonURLBase64Encode: TButton
               Left = 169
               Height = 25
               Top = 8
               Width = 120
               Caption = 'Base64URL编码'
-              OnClick = ButtonBase64EncodeURLClick
+              OnClick = ButtonURLBase64EncodeClick
               TabOrder = 2
             end
-            object ButtonBase64DecodeURL: TButton
+            object ButtonURLBase64Decode: TButton
               Left = 169
               Height = 25
               Top = 36
               Width = 120
               Caption = 'Base64URL解码'
-              OnClick = ButtonBase64DecodeURLClick
+              OnClick = ButtonURLBase64DecodeClick
               TabOrder = 3
             end
             object ButtonURLEncode: TButton
@@ -671,17 +677,17 @@ object FormMain: TFormMain
           end
           object PanelCoderOutput: TPanel
             Left = 0
-            Height = 368
-            Top = 96
+            Height = 264
+            Top = 200
             Width = 690
             Align = alClient
             BevelOuter = bvNone
-            ClientHeight = 368
+            ClientHeight = 264
             ClientWidth = 690
             TabOrder = 2
             object MemoCoderOutput: TMemo
               Left = 37
-              Height = 358
+              Height = 254
               Top = 5
               Width = 648
               Align = alClient
@@ -690,11 +696,12 @@ object FormMain: TFormMain
               BorderSpacing.Right = 5
               BorderSpacing.Bottom = 5
               OnChange = MemoHashInputChange
+              ScrollBars = ssAutoVertical
               TabOrder = 0
             end
             object LabelCoderOutput: TLabel
               Left = 5
-              Height = 358
+              Height = 254
               Top = 5
               Width = 27
               Align = alLeft
@@ -709,6 +716,117 @@ object FormMain: TFormMain
         end
         object TabJSON: TTabSheet
           Caption = 'JSON格式化'
+          ClientHeight = 535
+          ClientWidth = 690
+          object PanelJSONText: TPanel
+            Left = 0
+            Height = 200
+            Top = 0
+            Width = 690
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 200
+            ClientWidth = 690
+            TabOrder = 0
+            object MemoJSONText: TMemo
+              Left = 37
+              Height = 190
+              Top = 5
+              Width = 648
+              Align = alClient
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              OnChange = MemoJSONTextChange
+              ScrollBars = ssAutoVertical
+              TabOrder = 0
+            end
+            object LabelJSONText: TLabel
+              Left = 5
+              Height = 190
+              Top = 5
+              Width = 27
+              Align = alLeft
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              Caption = '文本'
+              ParentColor = False
+            end
+          end
+          object PanelCoderButtonGroup1: TPanel
+            Left = 0
+            Height = 39
+            Top = 496
+            Width = 690
+            Align = alBottom
+            BevelOuter = bvNone
+            ClientHeight = 39
+            ClientWidth = 690
+            TabOrder = 1
+            object ButtonJSONFormat: TButton
+              Left = 37
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'JSON格式化'
+              OnClick = ButtonJSONFormatClick
+              TabOrder = 0
+            end
+            object ButtonJSONCompact: TButton
+              Left = 169
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = 'JSON压缩'
+              OnClick = ButtonJSONCompactClick
+              TabOrder = 1
+            end
+            object ButtonJSONClear: TButton
+              Left = 301
+              Height = 25
+              Top = 8
+              Width = 120
+              Caption = '清空'
+              OnClick = ButtonJSONClearClick
+              TabOrder = 2
+            end
+          end
+          object PanelCoderOutput1: TPanel
+            Left = 0
+            Height = 296
+            Top = 200
+            Width = 690
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 296
+            ClientWidth = 690
+            TabOrder = 2
+            object LabelJSONView: TLabel
+              Left = 5
+              Height = 286
+              Top = 5
+              Width = 27
+              Align = alLeft
+              BorderSpacing.Left = 5
+              BorderSpacing.Top = 5
+              BorderSpacing.Right = 5
+              BorderSpacing.Bottom = 5
+              Caption = '视图'
+              ParentColor = False
+            end
+            object TreeViewJSONView: TTreeView
+              Left = 37
+              Height = 296
+              Top = 0
+              Width = 653
+              Align = alClient
+              ScrollBars = ssAutoBoth
+              TabOrder = 0
+            end
+          end
         end
         object TabBaseConv: TTabSheet
           Caption = '进制转换'
