@@ -8,6 +8,7 @@ import (
 	"html"
 	"log"
 	"net/url"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -27,7 +28,8 @@ func (f *TFormMain) OnMemoHashInputChange(sender vcl.IObject) {
 }
 
 func (f *TFormMain) OnCheckBoxHashLowerUpperCaseChange(sender vcl.IObject) {
-	f.calcHash()
+	// f.calcHash()
+	runtime.GC()
 }
 
 func (f *TFormMain) calcHash() {
