@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	if err := gotil.InitIPData("/Users/lht/code/github/Lofanmi/toolbox/qqwry.dat"); err != nil {
+	if err := gotil.InitIPData("/Users/a37/code/github/Lofanmi/toolbox/qqwry.dat"); err != nil {
 		panic(err)
 	}
 	vcl.Application.SetScaled(true)

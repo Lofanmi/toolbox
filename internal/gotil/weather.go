@@ -5,6 +5,9 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"strconv"
+	"strings"
+	"time"
 )
 
 type Weather struct {
@@ -21,14 +24,16 @@ type weatherComCN struct {
 }
 
 type weatherInfo struct {
-	City    string `json:"city"`
-	CityID  string `json:"cityid"`
-	Temp1   string `json:"temp1"`
-	Temp2   string `json:"temp2"`
-	Weather string `json:"weather"`
-	Img1    string `json:"img1"`
-	Img2    string `json:"img2"`
-	Time    string `json:"ptime"`
+	City         string `json:"cityname"`
+	CityID       string `json:"city"`
+	FcTime       string `json:"fctime"`
+	Temp1        string `json:"tempn"`
+	Temp2        string `json:"temp"`
+	Weather      string `json:"weather"`
+	WeatherCode  string `json:"weathercode"`
+	WeatherCodeN string `json:"weathercoden"`
+	Wd           string `json:"wd"`
+	Ws           string `json:"ws"`
 }
 
 func GetWeather() (w Weather, err error) {
@@ -46,16 +51,26 @@ func GetWeather() (w Weather, err error) {
 	if err != nil {
 		return
 	}
-	url := "http"
-	url += "://www.weather.com.cn/data/cityinfo/" + code + ".html"
-	res, err := http.Get(url)
+	t := strconv.Itoa(int(time.Now().UnixMilli()))
+	req, err := http.NewRequest(http.MethodGet, "https://d1.weather.com.cn/dingzhi/"+code+".html?_="+t, nil)
 	if err != nil {
 		return
 	}
-	body, err := io.ReadAll(res.Body)
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0")
+	req.Header.Set("Referer", "https://www.weather.com.cn/")
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return
+	}
+	data, err := io.ReadAll(res.Body)
+	body := string(data)
+	a, b := strings.Index(body, "="), strings.Index(body, ";")
+	if a != -1 && b != -1 && a < b && a+1 < len(body) && b < len(body) {
+		body = body[a+1 : b]
+	}
 	defer func() { _ = res.Body.Close() }()
 	var r weatherComCN
-	if err = json.Unmarshal(body, &r); err != nil {
+	if err = json.Unmarshal([]byte(body), &r); err != nil {
 		return
 	}
 	w.Location.IP = loc.IP
@@ -65,6 +80,16 @@ func GetWeather() (w Weather, err error) {
 	w.Temp1 = r.WeatherInfo.Temp1
 	w.Temp2 = r.WeatherInfo.Temp2
 	w.Weather = r.WeatherInfo.Weather
-	w.Time = r.WeatherInfo.Time
+	// if r.WeatherInfo.Ws != "" {
+	// 	w.Weather += " " + r.WeatherInfo.Ws
+	// }
+	// if r.WeatherInfo.Wd != "" {
+	// 	w.Weather += " " + r.WeatherInfo.Wd
+	// }
+	if len(r.WeatherInfo.FcTime) == 12 {
+		w.Time = r.WeatherInfo.FcTime[8:10] + ":00"
+	} else {
+		w.Time = "未知"
+	}
 	return
 }
